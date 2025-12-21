@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Flashify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+Bengali:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Roboto', 'sans-serif'],
+              jp: ['Noto Sans JP', 'sans-serif'],
+              bn: ['Noto Sans Bengali', 'sans-serif'],
+            },
+            transitionTimingFunction: {
+              'emphasized': 'cubic-bezier(0.2, 0.0, 0, 1.0)',
+              'emphasized-decelerate': 'cubic-bezier(0.05, 0.7, 0.1, 1.0)',
+              'emphasized-accelerate': 'cubic-bezier(0.3, 0.0, 0.8, 0.15)',
+            },
+            keyframes: {
+              'enter-slide-up': {
+                '0%': { opacity: '0', transform: 'translateY(20px) scale(0.96)' },
+                '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+              },
+              'enter-fade': {
+                '0%': { opacity: '0', transform: 'scale(0.95)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              'shake': {
+                '0%, 100%': { transform: 'translateX(0)' },
+                '25%': { transform: 'translateX(-4px)' },
+                '75%': { transform: 'translateX(4px)' },
+              },
+              'flash': {
+                '0%': { opacity: '0' },
+                '15%': { opacity: '0.85' },
+                '100%': { opacity: '0' },
+              }
+            },
+            animation: {
+              'enter': 'enter-slide-up 0.5s cubic-bezier(0.2, 0.0, 0, 1.0) forwards',
+              'fade-scale': 'enter-fade 0.3s cubic-bezier(0.2, 0.0, 0, 1.0) forwards',
+              'shake': 'shake 0.3s ease-in-out',
+              'flash': 'flash 0.4s ease-out forwards',
+            },
+            colors: {
+              m3: {
+                primary: '#F06292', 
+                onPrimary: '#FFFFFF',
+                primaryContainer: '#FCE4EC', 
+                onPrimaryContainer: '#880E4F', 
+                secondary: '#FF80AB',
+                onSecondary: '#FFFFFF',
+                secondaryContainer: '#F8BBD0',
+                onSecondaryContainer: '#880E4F',
+                tertiary: '#FFCC80', 
+                onTertiary: '#000000',
+                tertiaryContainer: '#FFF3E0',
+                onTertiaryContainer: '#E65100',
+                error: '#B3261E',
+                onError: '#FFFFFF',
+                errorContainer: '#F9DEDC',
+                onErrorContainer: '#410E0B',
+                background: '#FAFAFA', 
+                onBackground: '#1D1B20',
+                surface: '#FFFFFF',
+                onSurface: '#1D1B20',
+                surfaceVariant: '#F5F5F5', 
+                onSurfaceVariant: '#49454F',
+                outline: '#79747E',
+                dark: {
+                  primary: '#F48FB1',
+                  onPrimary: '#381E72',
+                  primaryContainer: '#880E4F',
+                  onPrimaryContainer: '#FCE4EC',
+                  background: '#121212', 
+                  surface: '#1E1E1E',   
+                  onSurface: '#E6E1E5',
+                  surfaceVariant: '#2C2C2C',
+                  onSurfaceVariant: '#CAC4D0',
+                }
+              }
+            },
+            boxShadow: {
+              'elevation-1': '0px 2px 4px rgba(0, 0, 0, 0.05)',
+              'elevation-2': '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              'elevation-3': '0px 8px 16px rgba(0, 0, 0, 0.1)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        -webkit-tap-highlight-color: transparent;
+      }
+      *, ::before, ::after {
+        border-width: 0;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .disable-animations *, 
+      .disable-animations *::before, 
+      .disable-animations *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    </style>
+  </head>
+  <body class="bg-m3-background text-m3-onBackground dark:bg-m3-dark-background dark:text-m3-dark-onSurface transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>
