@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bananyum-cache-v1';
+const CACHE_NAME = 'flashify-cache-v1';
 
 const ASSETS_TO_CACHE = [
   '/Flashify/',
@@ -26,4 +26,5 @@ self.addEventListener('fetch', (event) => {
       return response || fetch(event.request);
     })
   );
+
 });
