@@ -1,0 +1,22 @@
+{
+  "name": "Flashify",
+  "short_name": "Flashify",
+  "start_url": "/Flashify/",
+  "scope": "/Flashify/",
+  "display": "standalone",
+  "background_color": "#1F1B24",
+  "theme_color": "#1F1B24",
+  "icons": [
+    {
+      "src": "/Flashify/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/Flashify/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
