@@ -1,0 +1,5 @@
+{
+  "name": "Flashify - Multilingual Memory",
+  "description": "A focused, offline-first word memory application for English, Bengali, and Japanese. Features auto-flash mode and AI-assisted deck creation.",
+  "requestFramePermissions": []
+}
