@@ -10,19 +10,60 @@ interface ImportWizardProps {
   onComplete: () => void;
 }
 
-const AI_PROMPT = `Generate a JSON object with a "title" field (suitable name) and a "words" array containing 5-10 useful words. 
-Format:
+const AI_PROMPT = `Generate a JSON object for a flashcard based word learning app.
+
+IMPORTANT OUTPUT RULES:
+1) First, output ONLY the JSON data.
+2) Format it exactly as JSON and wrap it in a triple-backtick code block labeled json so it’s ready to copy.
+3) After the JSON code block ends, output a separate section called "Deck Suggestions".
+4) The "Deck Suggestions" section must NOT be inside the JSON.
+5) The JSON must remain valid and unchanged.
+
+APP CONTEXT:
+Flashfy is a word learning app.
+Do NOT generate sentences, phrases, examples, or explanations.
+Generate ONLY individual words.
+
+JSON FORMAT:
 {
   "title": "Topic Name",
   "words": [
     {
-      "en": "Cat",
-      "bn": "বিড়াল",
-      "jp": { "kanji": "猫", "kana": "ねこ" }
+      "en": "English word",
+      "bn": "Bangla word",
+      "jp": {
+        "kanji": "Kanji or empty if none",
+        "kana": "Kana reading"
+      }
     }
   ]
 }
-Return ONLY the JSON.`;
+
+WORD RULES:
+• Include ONLY individual words.
+• Do NOT include sentences or example usage.
+• Keep words simple, common, and learner friendly.
+• Japanese words must be in dictionary form.
+• If a Japanese word has kanji, include it.
+• If a Japanese word has no kanji, leave "kanji" empty ("").
+• Kana must be hiragana or katakana as appropriate.
+
+CONTENT RULES:
+• The "words" array must contain 5–10 words only.
+• Do NOT exceed 10 words.
+• Do NOT include fewer than 5 words.
+• The title must clearly describe the topic.
+• Output only valid JSON inside the code block.
+
+After the JSON block, include:
+
+Deck Suggestions:
+• Suggest exactly 5 new flashcard deck topics.
+• Each suggestion must focus on word learning only.
+• Each topic must be different.
+• Keep suggestions short and clear.
+• Do NOT include JSON in this section.
+• Do NOT repeat the topic used in the JSON.`;
 
 const ImportWizard: React.FC<ImportWizardProps> = ({ onBack, onComplete }) => {
   const [jsonInput, setJsonInput] = useState('');
